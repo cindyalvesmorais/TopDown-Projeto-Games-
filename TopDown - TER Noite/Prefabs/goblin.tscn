@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://cifkrf7v4u57f"]
+
+[ext_resource type="Script" path="res://Scenes/Goblin.gd" id="1_kqemk"]
+[ext_resource type="Texture2D" uid="uid://3wydyfvrpcgl" path="res://Sprites/Enemy/masked_orc_run_anim_f0.png" id="2_kt62o"]
+[ext_resource type="Texture2D" uid="uid://jmjmlgnwi73j" path="res://Sprites/Enemy/masked_orc_run_anim_f1.png" id="3_jsmyw"]
+[ext_resource type="Texture2D" uid="uid://vympgpqjoj3l" path="res://Sprites/Enemy/masked_orc_run_anim_f2.png" id="4_atfnv"]
+[ext_resource type="Texture2D" uid="uid://buc0bcvi7shnh" path="res://Sprites/Enemy/masked_orc_run_anim_f3.png" id="5_66w6p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4u42l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kt62o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jsmyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_atfnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_66w6p")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frfwj"]
+size = Vector2(8, 15)
+
+[node name="Goblin" type="CharacterBody2D"]
+script = ExtResource("1_kqemk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4u42l")
+animation = &"Run"
+autoplay = "Run"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 2.5)
+shape = SubResource("RectangleShape2D_frfwj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

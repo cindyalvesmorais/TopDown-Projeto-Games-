@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://yowyi8kqc5ev"]
+
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_nlg5y"]
+[ext_resource type="Texture2D" uid="uid://bkaf4hegk4yb1" path="res://Sprites/Weapons/weapon_red_gem_sword.png" id="1_ondqx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h3kc"]
+size = Vector2(10, 2)
+
+[node name="Bullet" type="CharacterBody2D" groups=["Bullet"]]
+script = ExtResource("1_nlg5y")
+
+[node name="WeaponRedGemSword" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_ondqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8h3kc")
